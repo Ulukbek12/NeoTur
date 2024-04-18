@@ -20,14 +20,35 @@ import java.util.List;
 public class TourController {
 
     TourService tourService;
-    @GetMapping("/{continent}")
+    @GetMapping("/tours")
+    public ResponseEntity<List<Tour>> getTours(){
+        return ResponseEntity.ok().body(tourService.getTours());
+    }
+
+    @GetMapping("/tours/{continent}")
     public ResponseEntity<List<Tour>> getToursByContinent(@PathVariable String continent){
         List<Tour> tours = tourService.getToursByContinent(continent);
         return ResponseEntity.ok().body(tours);
     }
-    @GetMapping
-    public ResponseEntity<List<Tour>> getTours(){
-        return ResponseEntity.ok().body(tourService.getTours());
+
+    @GetMapping("/tours/popular")
+    public ResponseEntity<List<Tour>> getPopularTours(){
+        return ResponseEntity.ok().body(tourService.getPopularTours());
+    }
+
+    @GetMapping("/tours/featured")
+    public ResponseEntity<List<Tour>> getFeaturedTours(){
+        return ResponseEntity.ok().body(tourService.getFeaturedTours());
+    }
+
+    @GetMapping("/tours/mostVisited")
+    public ResponseEntity<List<Tour>> getMostVisitedTours(){
+        return ResponseEntity.ok().body(tourService.getMostVisitedTours());
+    }
+
+    @GetMapping("/tours/recommended/{season}")
+    public ResponseEntity<List<Tour>> getRecommendedTours(@PathVariable String season){
+        return ResponseEntity.ok().body(tourService.getRecommendedTours(season));
     }
 
 }
