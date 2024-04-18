@@ -18,17 +18,28 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
-    @Column(name = "nickname")
-    private String nickname;
-    @Column(name = "description")
-    private String description;
-    @Column(name = "photoUrlId")
-    private Long photoUrlId;
+     Long id;
 
-    public Comment(String nickname, String description, Long photoUrlId) {
+    @Column(name = "nickname")
+     String nickname;
+
+    @Column(name = "description")
+     String description;
+
+    /*referencedColumnName = "id" говорит Hibernate, что внешний ключ в столбце
+    photoCommentId в таблице comment будет ссылаться на столбец id в таблице photoComment.*/
+    @OneToOne
+    @JoinColumn(name = "photo_comment_id",referencedColumnName = "id")
+    PhotoComment photoComment;
+
+    @ManyToOne
+    @JoinColumn(name = "tour_id",referencedColumnName = "id")
+    Tour tour;
+
+    public Comment(String nickname, String description, PhotoComment photoComment, Tour tour) {
         this.nickname = nickname;
         this.description = description;
-        this.photoUrlId = photoUrlId;
+        this.photoComment = photoComment;
+        this.tour = tour;
     }
 }

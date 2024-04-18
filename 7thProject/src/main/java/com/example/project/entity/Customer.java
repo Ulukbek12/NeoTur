@@ -19,18 +19,23 @@ public class Customer {
      @GeneratedValue(strategy = GenerationType.IDENTITY)
      @Column(name = "id")
      Long id;
-     @Column(name = "phoneNum")
-     String phoneNum;
-     @Column(name = "seatsOrder")
-     int seatsOrder;
+
+     @Column(name = "phone_num")
+     String phone_num;
+
+     @Column(name = "seats_order")
+     int seats_order;
+
      @Column(name = "booked")
      boolean booked;
-     @Column(name = "trip")
-     String trip;
-    public Customer(String phoneNum, int seatsOrder, boolean booked,String trip) {
-        this.phoneNum = phoneNum;
-        this.seatsOrder = seatsOrder;
+
+     @ManyToOne
+     @JoinColumn(name = "tour_id", referencedColumnName = "id")
+     Tour tour;
+    public Customer(String phone_num, int seats_order, boolean booked,Tour tour) {
+        this.phone_num = phone_num;
+        this.seats_order = seats_order;
         this.booked = booked;
-        this.trip = trip;
+        this.tour = tour;
     }
 }
