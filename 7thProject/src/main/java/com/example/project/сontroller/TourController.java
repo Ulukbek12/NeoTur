@@ -25,7 +25,7 @@ public class TourController {
         return ResponseEntity.ok().body(tourService.getTours());
     }
 
-    @GetMapping("/tours/{continent}")
+    @GetMapping("/tours/continent/{continent}")
     public ResponseEntity<List<Tour>> getToursByContinent(@PathVariable String continent){
         List<Tour> tours = tourService.getToursByContinent(continent);
         return ResponseEntity.ok().body(tours);
@@ -50,5 +50,8 @@ public class TourController {
     public ResponseEntity<List<Tour>> getRecommendedTours(@PathVariable String season){
         return ResponseEntity.ok().body(tourService.getRecommendedTours(season));
     }
-
+    @GetMapping("/tours/tour/{name}")
+    public ResponseEntity<Tour> getTour(@PathVariable String name) throws Exception {
+        return ResponseEntity.ok().body(tourService.getTourByName(name));
+    }
 }

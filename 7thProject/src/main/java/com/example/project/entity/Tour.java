@@ -51,6 +51,7 @@ public class Tour {
     @OneToMany(mappedBy = "tour")
     List<Customer> customers = new ArrayList<>();
 
+
     @OneToMany(mappedBy = "tour")
     List<Comment> comments = new ArrayList<>();
 

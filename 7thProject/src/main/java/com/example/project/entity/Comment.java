@@ -1,6 +1,7 @@
 package com.example.project.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -32,6 +33,7 @@ public class Comment {
     @JoinColumn(name = "photo_comment_id",referencedColumnName = "id")
     PhotoComment photoComment;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "tour_id",referencedColumnName = "id")
     Tour tour;

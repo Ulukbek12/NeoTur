@@ -77,7 +77,16 @@ public class TourService implements TourInterface {
             default -> throw new IllegalStateException("Unexpected value: " + season);
         };
     }
-
+    @Override
+    public Tour getTourByName(String name) throws Exception{
+      List<Tour> tours = tourRepository.findAll();
+      for(Tour tour : tours){
+          if(tour.getName().equalsIgnoreCase(name)){
+              return tour;
+          }
+      }
+      throw new Exception("Check for spaces or tour is not found");
+    }
 
 
 }
