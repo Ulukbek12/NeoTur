@@ -20,7 +20,7 @@ public class PhotoComment {
     Long id;
 
     @Column(name = "photo_url")
-    String photo_url;
+    String photo_url= "https://res.cloudinary.com/djdvbx4vj/image/upload/v1713346373/samples/NeoTur/CommentPicture.jpg";
 
     @JsonIgnore
     @OneToOne(mappedBy = "photoComment")

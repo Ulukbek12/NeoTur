@@ -1,32 +1,30 @@
 package com.example.project.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 @Entity
-@Table(name = "photo_tour")
+@Table(name = "entry")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class PhotoTour {
+public class Entry {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     Long id;
 
-    @Column(name = "photo_url")
-    String photo_url;
+    @Column(name = "title")
+    String title;
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "photoTour")
-    Tour tour;
+    @Column(name = "description")
+    String description;
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "photoTour")
-    Entry entry;
+    @OneToOne
+    @JoinColumn(name = "photo_tour_id",referencedColumnName = "id")
+    PhotoTour photoTour;
 }

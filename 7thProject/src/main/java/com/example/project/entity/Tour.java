@@ -1,5 +1,6 @@
 package com.example.project.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -48,6 +49,7 @@ public class Tour {
     @JoinColumn(name = "photo_tour_id",referencedColumnName = "id")
     PhotoTour photoTour;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "tour")
     List<Customer> customers = new ArrayList<>();
 
