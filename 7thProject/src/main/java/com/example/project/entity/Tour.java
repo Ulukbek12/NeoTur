@@ -45,16 +45,16 @@ public class Tour {
     @Column(name = "featured")
     boolean  featured;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "photo_tour_id",referencedColumnName = "id")
     PhotoTour photoTour;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "tour")
+    @OneToMany(mappedBy = "tour", fetch = FetchType.EAGER)
     List<Customer> customers = new ArrayList<>();
 
 
-    @OneToMany(mappedBy = "tour")
+    @OneToMany(mappedBy = "tour", fetch = FetchType.EAGER)
     List<Comment> comments = new ArrayList<>();
 
 

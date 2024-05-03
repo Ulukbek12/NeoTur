@@ -23,7 +23,7 @@ public class PhotoComment {
     String photo_url= "https://res.cloudinary.com/djdvbx4vj/image/upload/v1713346373/samples/NeoTur/CommentPicture.jpg";
 
     @JsonIgnore
-    @OneToOne(mappedBy = "photoComment")
+    @OneToOne(mappedBy = "photoComment",fetch = FetchType.EAGER)
     Comment comment;
 }
 // кавычках указывается имя поле в класса comment

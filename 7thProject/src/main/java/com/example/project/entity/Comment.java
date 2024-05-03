@@ -29,12 +29,12 @@ public class Comment {
 
     /*referencedColumnName = "id" говорит Hibernate, что внешний ключ в столбце
     photoCommentId в таблице comment будет ссылаться на столбец id в таблице photoComment.*/
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "photo_comment_id",referencedColumnName = "id")
     PhotoComment photoComment;
 
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "tour_id",referencedColumnName = "id")
     Tour tour;
 

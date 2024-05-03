@@ -23,10 +23,10 @@ public class PhotoTour {
     String photo_url;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "photoTour")
+    @OneToOne(mappedBy = "photoTour",fetch = FetchType.EAGER)
     Tour tour;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "photoTour")
+    @OneToOne(mappedBy = "photoTour",fetch = FetchType.EAGER)
     Entry entry;
 }

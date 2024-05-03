@@ -24,7 +24,7 @@ public class Entry {
     @Column(name = "description")
     String description;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "photo_tour_id",referencedColumnName = "id")
     PhotoTour photoTour;
 }

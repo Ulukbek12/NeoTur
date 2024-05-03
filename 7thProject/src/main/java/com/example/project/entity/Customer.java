@@ -29,7 +29,7 @@ public class Customer {
      @Column(name = "booked")
      boolean booked;
 
-     @ManyToOne
+     @ManyToOne(fetch = FetchType.EAGER)
      @JoinColumn(name = "tour_id", referencedColumnName = "id")
      Tour tour;
 
